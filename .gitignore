@@ -1,0 +1,9 @@
+# Dependencies and build output (recreated by `npm ci` and `npm run build`)
+node_modules/
+dist/
+
+# OS, editor, and local environment files
+.DS_Store
+.idea/
+*.log
+.env*

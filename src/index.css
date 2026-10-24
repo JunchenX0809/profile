@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* Design tokens. Every color, font, and custom animation on the site comes from
+   here, and Tailwind turns each into utilities: --color-accent becomes
+   bg-accent, text-accent, border-accent, and so on. Restyle the site here. */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: #f6f4ef;
+  --color-card: #fffdf8;
+  --color-ink: #141a2e;
+  --color-muted: #5a6172;
+  --color-line: #e3dfd5;
+  /* Decorative orange; too light for small text on paper. */
+  --color-accent: #ff5a36;
+  /* Darker orange that keeps 4.5:1 contrast for small text on paper. */
+  --color-accent-ink: #c2391a;
+  --color-tide: #2d5be3;
+
+  --animate-blink: blink 1.1s step-end infinite;
+  --animate-ping-slow: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-tide);
+    outline-offset: 3px;
+  }
+}
+
+/* A faint dot grid, like graph paper. */
+@utility bg-dot-grid {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--color-ink) 13%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
