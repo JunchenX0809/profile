@@ -1,0 +1,128 @@
+import { motion } from 'motion/react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+import { LuArrowDown, LuFileText, LuMapPin } from 'react-icons/lu'
+import { profile } from '../content/profile.js'
+import IconLink from './IconLink.jsx'
+import Typewriter from './Typewriter.jsx'
+
+const resumeUrl = `${import.meta.env.BASE_URL}${profile.resume}`
+const ease = [0.22, 1, 0.36, 1]
+
+function rise(delay) {
+  return {
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease, delay },
+  }
+}
+
+// Stores the pointer position as CSS variables; the spotlight layer reads them.
+function trackPointer(event) {
+  const box = event.currentTarget.getBoundingClientRect()
+  event.currentTarget.style.setProperty('--x', `${event.clientX - box.left}px`)
+  event.currentTarget.style.setProperty('--y', `${event.clientY - box.top}px`)
+}
+
+export default function Hero() {
+  return (
+    <section
+      id="home"
+      aria-label="Introduction"
+      onPointerMove={trackPointer}
+      className="relative isolate flex min-h-svh items-center overflow-hidden"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            'radial-gradient(640px circle at var(--x, 75%) var(--y, 35%), color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 65%)',
+        }}
+      />
+
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-16 px-5 pt-20 pb-32 sm:px-8 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
+        <div>
+          <motion.p
+            {...rise(0.05)}
+            className="inline-flex items-center gap-2.5 rounded-full border border-line bg-card/80 px-3.5 py-1.5 font-mono text-xs text-muted backdrop-blur"
+          >
+            <span className="relative flex size-2" aria-hidden="true">
+              <span className="absolute inset-0 animate-ping-slow rounded-full bg-accent opacity-60 motion-reduce:animate-none" />
+              <span className="relative size-2 rounded-full bg-accent" />
+            </span>
+            Currently · {profile.status}
+          </motion.p>
+
+          <motion.h1
+            {...rise(0.15)}
+            className="mt-8 font-display text-6xl leading-[0.95] font-semibold tracking-tight sm:text-7xl lg:text-8xl"
+          >
+            {profile.firstName}
+            <br />
+            <em className="font-medium text-accent-ink">{profile.lastName}.</em>
+          </motion.h1>
+
+          <motion.p {...rise(0.25)} className="mt-7 min-h-[1.5em] font-mono text-lg sm:text-xl">
+            <span className="mr-2 text-accent-ink" aria-hidden="true">
+              &gt;
+            </span>
+            <Typewriter words={profile.roles} />
+          </motion.p>
+
+          <motion.p
+            {...rise(0.35)}
+            className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted"
+          >
+            {profile.intro}
+          </motion.p>
+
+          <motion.div {...rise(0.45)} className="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href="#work"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink/20"
+            >
+              See my work <LuArrowDown aria-hidden="true" />
+            </a>
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-ink/40"
+            >
+              <LuFileText aria-hidden="true" /> Résumé
+            </a>
+            <div className="flex items-center gap-1">
+              <IconLink href={profile.linkedin} label="LinkedIn">
+                <FaLinkedin />
+              </IconLink>
+              <IconLink href={profile.github} label="GitHub">
+                <FaGithub />
+              </IconLink>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease, delay: 0.3 }}
+          className="relative mx-auto w-full max-w-xs sm:max-w-sm"
+        >
+          <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] bg-accent" />
+          <div aria-hidden="true" className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[2rem] border border-ink/20" />
+          <img
+            src={profile.portrait}
+            alt={profile.portraitAlt}
+            width="658"
+            height="1000"
+            className="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl shadow-ink/20"
+          />
+          <p className="absolute -bottom-5 -left-4 inline-flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-2.5 font-mono text-xs shadow-lg">
+            <LuMapPin className="text-accent-ink" aria-hidden="true" />
+            {profile.location}
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
