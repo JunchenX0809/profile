@@ -1,6 +1,7 @@
 import { MotionConfig } from 'motion/react'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
+import CursorBlob from './components/CursorBlob.jsx'
 import Experience from './components/Experience.jsx'
 import Footer from './components/Footer.jsx'
 import Hero from './components/Hero.jsx'
@@ -31,6 +32,7 @@ export default function App() {
         <Footer />
       </div>
       <Nav />
+      <CursorBlob />
     </MotionConfig>
   )
 }

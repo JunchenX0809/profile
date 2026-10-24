@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { LuArrowDown, LuFileText, LuMapPin } from 'react-icons/lu'
 import { profile } from '../content/profile.js'
 import IconLink from './IconLink.jsx'
+import Magnetic from './Magnetic.jsx'
 import Typewriter from './Typewriter.jsx'
 
 const resumeUrl = `${import.meta.env.BASE_URL}${profile.resume}`
@@ -16,19 +17,11 @@ function rise(delay) {
   }
 }
 
-// Stores the pointer position as CSS variables; the spotlight layer reads them.
-function trackPointer(event) {
-  const box = event.currentTarget.getBoundingClientRect()
-  event.currentTarget.style.setProperty('--x', `${event.clientX - box.left}px`)
-  event.currentTarget.style.setProperty('--y', `${event.clientY - box.top}px`)
-}
-
 export default function Hero() {
   return (
     <section
       id="home"
       aria-label="Introduction"
-      onPointerMove={trackPointer}
       className="relative isolate flex min-h-svh items-center overflow-hidden"
     >
       <div
@@ -36,7 +29,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            'radial-gradient(640px circle at var(--x, 75%) var(--y, 35%), color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 65%)',
+            'radial-gradient(640px circle at 75% 35%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 65%)',
         }}
       />
 
@@ -77,27 +70,35 @@ export default function Hero() {
           </motion.p>
 
           <motion.div {...rise(0.45)} className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink/20"
-            >
-              See my work <LuArrowDown aria-hidden="true" />
-            </a>
-            <a
-              href={resumeUrl}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-ink/40"
-            >
-              <LuFileText aria-hidden="true" /> Résumé
-            </a>
+            <Magnetic strength={0.2}>
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-shadow hover:shadow-lg hover:shadow-ink/20"
+              >
+                See my work <LuArrowDown aria-hidden="true" />
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-6 py-3 text-sm font-semibold transition-colors hover:border-ink/40"
+              >
+                <LuFileText aria-hidden="true" /> Résumé
+              </a>
+            </Magnetic>
             <div className="flex items-center gap-1">
-              <IconLink href={profile.linkedin} label="LinkedIn">
-                <FaLinkedin />
-              </IconLink>
-              <IconLink href={profile.github} label="GitHub">
-                <FaGithub />
-              </IconLink>
+              <Magnetic>
+                <IconLink href={profile.linkedin} label="LinkedIn">
+                  <FaLinkedin />
+                </IconLink>
+              </Magnetic>
+              <Magnetic>
+                <IconLink href={profile.github} label="GitHub">
+                  <FaGithub />
+                </IconLink>
+              </Magnetic>
             </div>
           </motion.div>
         </div>

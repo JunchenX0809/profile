@@ -2,13 +2,8 @@
 node_modules/
 dist/
 
-# Local notes, plans, and agent settings (kept on this machine only)
-skills/
-.claude/
-
-# Editor and OS files
+# OS, editor, and local environment files
 .DS_Store
 .idea/
-*.code-workspace
 *.log
 .env*

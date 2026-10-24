@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { LuBriefcaseBusiness, LuHouse, LuLayers, LuMail, LuUser, LuWrench } from 'react-icons/lu'
 import { useActiveSection } from '../hooks/useActiveSection.js'
+import Magnetic from './Magnetic.jsx'
 
 const items = [
   { id: 'home', label: 'Home', Icon: LuHouse },
@@ -22,6 +23,7 @@ export default function Nav() {
           const isActive = active === id
           return (
             <li key={id}>
+              <Magnetic>
               <a
                 href={`#${id}`}
                 aria-label={label}
@@ -41,6 +43,7 @@ export default function Nav() {
                 <Icon className="size-5" aria-hidden="true" />
                 <span className={isActive ? 'hidden md:inline' : 'hidden'}>{label}</span>
               </a>
+              </Magnetic>
             </li>
           )
         })}

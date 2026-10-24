@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 import { LuArrowUpRight, LuCheck, LuCopy, LuFileText, LuMail } from 'react-icons/lu'
 import { profile } from '../content/profile.js'
+import Magnetic from './Magnetic.jsx'
 import Reveal from './Reveal.jsx'
 
 const resumeUrl = `${import.meta.env.BASE_URL}${profile.resume}`
@@ -47,21 +48,25 @@ export default function Contact() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-paper"
-          >
-            <LuMail aria-hidden="true" />
-            {profile.email}
-          </a>
-          <button
-            type="button"
-            onClick={copyEmail}
-            className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-5 py-3 text-sm font-semibold transition hover:border-paper/60"
-          >
-            {copied ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
-            {copied ? 'Copied' : 'Copy email'}
-          </button>
+          <Magnetic strength={0.2}>
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-paper"
+            >
+              <LuMail aria-hidden="true" />
+              {profile.email}
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.2}>
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-paper/60"
+            >
+              {copied ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+              {copied ? 'Copied' : 'Copy email'}
+            </button>
+          </Magnetic>
           <span role="status" className="sr-only">
             {copied ? 'Email address copied' : ''}
           </span>
