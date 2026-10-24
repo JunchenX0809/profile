@@ -3,6 +3,7 @@
   "plugins": ["react", "oxc"],
   "ignorePatterns": ["dist", "skills"],
   "globals": {
+    "__APP_VERSION__": "readonly",
     "__BUILD_DATE__": "readonly"
   },
   "rules": {

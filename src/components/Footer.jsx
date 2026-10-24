@@ -8,7 +8,7 @@ export default function Footer() {
         © {__BUILD_DATE__.slice(0, 4)} {profile.firstName} {profile.lastName}
       </p>
       <p>
-        Updated {__BUILD_DATE__} · Built with React, Tailwind & Vite ·{' '}
+        v{__APP_VERSION__} · Updated {__BUILD_DATE__} · Built with React, Tailwind & Vite ·{' '}
         <a href={profile.sourceCode} className="underline underline-offset-4 hover:text-ink">
           Source
         </a>
