@@ -4,18 +4,18 @@ import headshot from '../assets/photos/headshot.jpg'
 export const profile = {
   firstName: 'Junchen',
   lastName: 'Xiong',
-  status: 'Data Scientist',
+  status: 'Data Scientist at Bankuity',
   location: 'New York City',
   // The hero cycles through these after the ">" prompt.
   roles: [
     'data scientist',
-    'energy-markets analyst',
-    'go-to-market at Bankuity',
+    'credit-risk modeler',
+    'ML researcher',
     'strength coach',
     'speedcuber',
   ],
   intro:
-    'I’m a data scientist who turns messy, real-world data into decisions people can act on, from forecasting New York’s grid load to modeling air pollution at 200-meter resolution.',
+    'I’m a data scientist who builds production ML for consumer lending, from credit-risk features and transaction labeling to the pipelines that keep models accurate for clients.',
   // Hero carousel, shown in this order. `position` sets which part of the photo
   // stays in frame (CSS object-position); `caption` appears on the photo.
   photos: [
@@ -43,13 +43,13 @@ export const profile = {
 export const about = {
   paragraphs: [
     'I’m a data scientist who enjoys the whole path from raw data to a decision. I studied business analytics and mathematics at Boston University, then quantitative methods and data science at Columbia.',
-    'At NYSERDA I built PySpark pipelines, forecasting models, and Power BI dashboards for New York’s energy-markets team. Alongside my data work, I help Bankuity with go-to-market, pairing analysis with the tools the team actually uses.',
+    'Today I’m a data scientist at Concord Advice and Bankuity, building credit-risk features, NER-based transaction labeling, and the KPI pipelines behind them. Before that, I built PySpark forecasting pipelines and Power BI dashboards for NYSERDA’s energy-markets team, and machine-learning models for air-pollution and satellite-imagery research.',
     'Outside work I train and coach strength athletes (NASM-certified), swim, and solve Rubik’s cubes faster than is strictly necessary.',
   ],
   stats: [
+    { value: '$200K+', label: 'per month recovered for a lending client with new credit features' },
+    { value: '+30%', label: 'loan capture from the NER transaction-labeling upgrade' },
     { value: '3.98', label: 'GPA at Columbia QMSS, top 5%' },
     { value: '1st', label: 'Columbia Data Science Society Datathon, environmental track' },
-    { value: '−20%', label: 'grid-load forecast error versus the prior model at NYSERDA' },
-    { value: '10+', label: 'Power BI dashboards shipped for energy-market reporting' },
   ],
 }

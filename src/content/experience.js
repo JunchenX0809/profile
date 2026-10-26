@@ -1,14 +1,27 @@
 // Newest first. Each entry becomes one stop on the timeline.
 export const experience = [
   {
-    company: 'Bankuity',
+    company: 'Concord Advice & Bankuity',
     href: 'https://www.bankuity.com/',
-    role: 'Go-to-Market (GTM)',
-    period: 'Current',
+    role: 'Data Scientist, Model Development & Analytics',
+    period: 'Aug 2025 – Present',
     location: 'New York, NY',
     highlights: [
-      'Support go-to-market for an early-stage fintech alongside my data work: positioning, outreach, and the tools behind them.',
-      'Built and run the team’s NFC and QR digital business cards on Cloudflare Pages.',
+      'Engineered Canada-specific credit features that tripled the generic model’s test-set lift, helping a lending client recover $200,000+ per month.',
+      'Built the accuracy evaluation that cleared a new NER transaction-labeling model for production: +30% loan capture, −32.6% transfer noise.',
+      'Built a containerized KPI pipeline and Streamlit dashboard for two lending clients in two regions.',
+      'Took initiative on client-facing go-to-market work: a GPT labeling pipeline that scores 100+ prospects against the ideal customer profile, cutting research per 5,000-transaction enrichment batch from 12 hours to 1.',
+    ],
+  },
+  {
+    company: 'Columbia University',
+    href: 'https://www.gsas.columbia.edu/',
+    role: 'Graduate Research Assistant, Hybrid ML Air Pollution Modeling',
+    period: 'Jan 2025 – Sep 2025',
+    location: 'New York, NY',
+    highlights: [
+      'Delivered an interpretable XGBoost model predicting NO₂ at 200 m resolution (spatial R² 0.84) with Prof. Mike Z. He.',
+      'Built a hybrid Isolation Forest anomaly system that cut misclassification by 30% in the ozone data pipeline.',
     ],
   },
   {
