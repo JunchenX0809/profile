@@ -7,7 +7,7 @@ export const experience = [
     period: 'Current',
     location: 'New York, NY',
     highlights: [
-      'Lead go-to-market work for an early-stage fintech: positioning, outreach, and the tools behind them.',
+      'Support go-to-market for an early-stage fintech alongside my data work: positioning, outreach, and the tools behind them.',
       'Built and run the team’s NFC and QR digital business cards on Cloudflare Pages.',
     ],
   },
@@ -47,13 +47,13 @@ export const experience = [
 export const education = [
   {
     school: 'Columbia University',
-    degree: 'M.A., Quantitative Methods in the Social Sciences — Data Science track',
+    degree: 'M.A., Quantitative Methods in the Social Sciences (Data Science track)',
     period: '2023 – 2025',
     note: 'Top 5% · GPA 3.98 · 1st place, CDSS Datathon',
   },
   {
     school: 'Boston University, Questrom School of Business',
-    degree: 'B.S. Business Administration — MIS & Business Analytics, minor in Mathematics',
+    degree: 'B.S. Business Administration in MIS & Business Analytics, minor in Mathematics',
     period: '2019 – 2023',
     note: 'Magna cum laude · GPA 3.82',
   },

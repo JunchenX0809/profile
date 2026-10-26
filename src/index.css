@@ -5,18 +5,20 @@
    bg-accent, text-accent, border-accent, and so on. Restyle the site here. */
 @theme {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  /* Montserrat is the free counterpart of Gotham, the face on Nolan's title cards. */
+  --font-display: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
 
   --color-paper: #f6f4ef;
   --color-card: #fffdf8;
-  --color-ink: #141a2e;
-  --color-muted: #5a6172;
+  /* Bankuity navy. */
+  --color-ink: #1b1d3d;
+  --color-muted: #5a5e74;
   --color-line: #e3dfd5;
-  /* Decorative orange; too light for small text on paper. */
-  --color-accent: #ff5a36;
-  /* Darker orange that keeps 4.5:1 contrast for small text on paper. */
-  --color-accent-ink: #c2391a;
+  /* Bankuity cyan shifted toward green and softened. Fills, and text on ink. */
+  --color-accent: #2e9e83;
+  /* Darker green that keeps 4.5:1 contrast for small text on paper. */
+  --color-accent-ink: #12705a;
   --color-tide: #2d5be3;
 
   --animate-blink: blink 1.1s step-end infinite;

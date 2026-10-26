@@ -1,9 +1,10 @@
 import { motion } from 'motion/react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
-import { LuArrowDown, LuFileText, LuMapPin } from 'react-icons/lu'
+import { LuArrowDown, LuFileText } from 'react-icons/lu'
 import { profile } from '../content/profile.js'
 import IconLink from './IconLink.jsx'
 import Magnetic from './Magnetic.jsx'
+import PhotoCarousel from './PhotoCarousel.jsx'
 import Typewriter from './Typewriter.jsx'
 
 const resumeUrl = `${import.meta.env.BASE_URL}${profile.resume}`
@@ -48,11 +49,11 @@ export default function Hero() {
 
           <motion.h1
             {...rise(0.15)}
-            className="mt-8 font-display text-6xl leading-[0.95] font-semibold tracking-tight sm:text-7xl lg:text-8xl"
+            className="mt-8 font-display text-5xl leading-[1.05] font-bold tracking-[0.08em] uppercase sm:text-7xl lg:text-[5.25rem]"
           >
             {profile.firstName}
             <br />
-            <em className="font-medium text-accent-ink">{profile.lastName}.</em>
+            <span className="text-accent-ink">{profile.lastName}</span>
           </motion.h1>
 
           <motion.p {...rise(0.25)} className="mt-7 min-h-[1.5em] font-mono text-lg sm:text-xl">
@@ -111,17 +112,7 @@ export default function Hero() {
         >
           <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] bg-accent" />
           <div aria-hidden="true" className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[2rem] border border-ink/20" />
-          <img
-            src={profile.portrait}
-            alt={profile.portraitAlt}
-            width="658"
-            height="1000"
-            className="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl shadow-ink/20"
-          />
-          <p className="absolute -bottom-5 -left-4 inline-flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-2.5 font-mono text-xs shadow-lg">
-            <LuMapPin className="text-accent-ink" aria-hidden="true" />
-            {profile.location}
-          </p>
+          <PhotoCarousel photos={profile.photos} />
         </motion.div>
       </div>
     </section>
