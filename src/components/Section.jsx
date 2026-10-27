@@ -5,7 +5,7 @@ export default function Section({ id, index, eyebrow, title, children }) {
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="mx-auto max-w-6xl scroll-mt-8 px-5 py-24 sm:px-8 md:py-32"
+      className="mx-auto max-w-6xl scroll-mt-8 px-5 py-16 sm:px-8 sm:py-24 md:py-32"
     >
       <Reveal>
         <p className="font-mono text-xs tracking-[0.2em] text-accent-ink uppercase">
@@ -18,7 +18,7 @@ export default function Section({ id, index, eyebrow, title, children }) {
           {title}
         </h2>
       </Reveal>
-      <div className="mt-12 md:mt-16">{children}</div>
+      <div className="mt-8 sm:mt-12 md:mt-16">{children}</div>
     </section>
   )
 }

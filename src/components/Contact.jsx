@@ -30,9 +30,9 @@ export default function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="mx-auto max-w-6xl scroll-mt-8 px-5 py-24 sm:px-8 md:py-32"
+      className="mx-auto max-w-6xl scroll-mt-8 px-5 py-16 sm:px-8 sm:py-24 md:py-32"
     >
-      <Reveal className="relative isolate overflow-hidden rounded-[2.5rem] bg-ink px-6 py-16 text-paper sm:px-12 md:px-16 md:py-20">
+      <Reveal className="relative isolate overflow-hidden rounded-[2rem] bg-ink px-6 py-12 text-paper sm:rounded-[2.5rem] sm:px-12 sm:py-16 md:px-16 md:py-20">
         <div aria-hidden="true" className="absolute -top-28 -right-28 -z-10 size-[28rem] rounded-full bg-accent/35 blur-3xl" />
 
         <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">05 / Contact</p>
@@ -42,7 +42,7 @@ export default function Contact() {
         >
           Let’s talk data, markets, or anything in between.
         </h2>
-        <p className="mt-6 max-w-xl text-lg text-paper/70">
+        <p className="mt-6 max-w-xl text-base text-paper/70 sm:text-lg">
           I’m always happy to hear about interesting problems, roles, and collaborations. Email is the best way to
           reach me.
         </p>

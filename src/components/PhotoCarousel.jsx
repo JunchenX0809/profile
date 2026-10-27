@@ -11,6 +11,13 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
   const count = photos.length
   const photo = photos[index]
 
+  // Swipe left for the next photo, right for the previous one.
+  function handleSwipe(_event, info) {
+    if (Math.abs(info.offset.x) < 40) return
+    const step = info.offset.x < 0 ? 1 : -1
+    setIndex((i) => (i + step + count) % count)
+  }
+
   useEffect(() => {
     if (count < 2 || paused || reduceMotion) return
     const timer = setInterval(() => setIndex((i) => (i + 1) % count), interval)
@@ -28,7 +35,17 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-ink shadow-2xl shadow-ink/20">
+      <motion.div
+        className="relative aspect-[4/5] cursor-grab overflow-hidden rounded-[2rem] bg-ink shadow-2xl shadow-ink/20 active:cursor-grabbing"
+        drag={count > 1 ? 'x' : false}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.25}
+        onDragStart={() => setPaused(true)}
+        onDragEnd={(event, info) => {
+          setPaused(false)
+          handleSwipe(event, info)
+        }}
+      >
         <AnimatePresence initial={false}>
           <motion.img
             key={photo.src}
@@ -38,8 +55,9 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 size-full object-cover"
+            className="pointer-events-none absolute inset-0 size-full object-cover select-none"
             style={{ objectPosition: photo.position }}
+            draggable={false}
           />
         </AnimatePresence>
 
@@ -53,7 +71,7 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
                 aria-current={i === index ? 'true' : undefined}
                 data-cursor="none"
                 onClick={() => setIndex(i)}
-                className="grid size-6 place-items-center"
+                className="grid size-9 place-items-center lg:size-6"
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${
@@ -64,7 +82,7 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
 
       {photo.caption && (
         <p className="absolute -bottom-5 -left-4 inline-flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-2.5 font-mono text-xs shadow-lg">

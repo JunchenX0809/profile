@@ -34,7 +34,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-16 px-5 pt-20 pb-32 sm:px-8 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pt-12 pb-28 sm:gap-16 sm:px-8 sm:pt-20 sm:pb-32 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
         <div>
           <motion.p
             {...rise(0.05)}
@@ -44,19 +44,19 @@ export default function Hero() {
               <span className="absolute inset-0 animate-ping-slow rounded-full bg-accent opacity-60 motion-reduce:animate-none" />
               <span className="relative size-2 rounded-full bg-accent" />
             </span>
-            Currently · {profile.status}
+            <span className="hidden sm:inline">Currently ·</span> {profile.status}
           </motion.p>
 
           <motion.h1
             {...rise(0.15)}
-            className="mt-8 font-display text-5xl leading-[1.05] font-bold tracking-[0.08em] uppercase sm:text-7xl lg:text-[5.25rem]"
+            className="mt-6 font-display text-5xl leading-[1.05] sm:mt-8 font-bold tracking-[0.08em] uppercase sm:text-7xl lg:text-[5.25rem]"
           >
             {profile.firstName}
             <br />
             <span className="text-accent-ink">{profile.lastName}</span>
           </motion.h1>
 
-          <motion.p {...rise(0.25)} className="mt-7 min-h-[1.5em] font-mono text-lg sm:text-xl">
+          <motion.p {...rise(0.25)} className="mt-6 min-h-[1.5em] font-mono text-base sm:mt-7 sm:text-xl">
             <span className="mr-2 text-accent-ink" aria-hidden="true">
               &gt;
             </span>
@@ -65,7 +65,7 @@ export default function Hero() {
 
           <motion.p
             {...rise(0.35)}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted"
+            className="mt-6 max-w-xl text-base leading-relaxed text-pretty text-muted sm:text-lg"
           >
             {profile.intro}
           </motion.p>
@@ -104,11 +104,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* On phones the photo comes first and smaller, so it is on the first screen. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease, delay: 0.3 }}
-          className="relative mx-auto w-full max-w-xs sm:max-w-sm"
+          className="relative order-first mx-auto w-full max-w-[12.5rem] sm:max-w-xs lg:order-none lg:max-w-sm"
         >
           <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] bg-accent" />
           <div aria-hidden="true" className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[2rem] border border-ink/20" />

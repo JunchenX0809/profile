@@ -6,7 +6,7 @@ export default function About() {
   return (
     <Section id="about" index="01" eyebrow="About" title="Data, markets, and the people who use them.">
       <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
-        <Reveal className="space-y-5 text-lg leading-relaxed text-pretty text-muted">
+        <Reveal className="space-y-5 text-base leading-relaxed text-pretty text-muted sm:text-lg">
           {about.paragraphs.map((paragraph) => (
             <p key={paragraph} className="first:text-ink">
               {paragraph}
