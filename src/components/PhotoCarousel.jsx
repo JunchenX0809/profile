@@ -63,8 +63,8 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
         </AnimatePresence>
 
         {count > 1 && (
-          // Top corner on phones, where the caption chip would cover them.
-          <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-ink/45 p-1 backdrop-blur lg:top-auto lg:right-4 lg:bottom-4">
+          // Raised above the caption chip on phones; faces sit near the top, so the top is off limits.
+          <div className="absolute right-2 bottom-8 flex items-center rounded-full bg-ink/45 p-0.5 backdrop-blur lg:right-4 lg:bottom-4 lg:gap-1 lg:p-1">
             {photos.map((item, i) => (
               <button
                 key={item.src}
@@ -73,7 +73,7 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
                 aria-current={i === index ? 'true' : undefined}
                 data-cursor="none"
                 onClick={() => setIndex(i)}
-                className="grid size-9 place-items-center lg:size-6"
+                className="grid size-7 place-items-center lg:size-6"
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${

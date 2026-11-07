@@ -56,7 +56,7 @@ export default function Hero() {
             <span className="text-accent-ink">{profile.lastName}</span>
           </motion.h1>
 
-          <motion.p {...rise(0.25)} className="mt-6 min-h-[1.5em] font-mono text-base sm:mt-7 sm:text-xl">
+          <motion.p {...rise(0.25)} className="mt-6 min-h-[1.5em] font-mono text-sm sm:mt-7 sm:text-xl">
             <span className="mr-2 text-accent-ink" aria-hidden="true">
               &gt;
             </span>

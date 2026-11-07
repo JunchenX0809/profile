@@ -1,3 +1,4 @@
+import columbiaGraduation from '../assets/photos/columbia-graduation.jpg'
 import graduation from '../assets/photos/graduation.jpg'
 import headshot from '../assets/photos/headshot.jpg'
 import presenting from '../assets/photos/presenting.jpg'
@@ -12,7 +13,7 @@ export const profile = {
     'data scientist',
     'credit-risk modeler',
     'ML researcher',
-    'strength coach',
+    'strength training coach, NASM CPT',
     'speedcuber',
   ],
   intro:
@@ -31,6 +32,12 @@ export const profile = {
       alt: 'Junchen Xiong at his Boston University graduation, wearing a red gown',
       caption: 'Boston University, 2023',
       position: 'center',
+    },
+    {
+      src: columbiaGraduation,
+      alt: 'Junchen Xiong at his Columbia University graduation, wearing a light blue gown',
+      caption: 'Columbia University, 2025',
+      position: 'center top',
     },
     {
       src: presenting,
