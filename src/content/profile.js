@@ -1,5 +1,6 @@
 import graduation from '../assets/photos/graduation.jpg'
 import headshot from '../assets/photos/headshot.jpg'
+import presenting from '../assets/photos/presenting.jpg'
 
 export const profile = {
   firstName: 'Junchen',
@@ -29,6 +30,12 @@ export const profile = {
       src: graduation,
       alt: 'Junchen Xiong at his Boston University graduation, wearing a red gown',
       caption: 'Boston University, 2023',
+      position: 'center',
+    },
+    {
+      src: presenting,
+      alt: 'Junchen Xiong presenting with a microphone in front of a screen and a laptop',
+      caption: 'Presenting my work, New York',
       position: 'center',
     },
   ],

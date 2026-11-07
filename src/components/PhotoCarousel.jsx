@@ -20,9 +20,10 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
 
   useEffect(() => {
     if (count < 2 || paused || reduceMotion) return
-    const timer = setInterval(() => setIndex((i) => (i + 1) % count), interval)
-    return () => clearInterval(timer)
-  }, [count, paused, reduceMotion, interval])
+    // Depends on `index` so a tap or swipe restarts the countdown.
+    const timer = setTimeout(() => setIndex((i) => (i + 1) % count), interval)
+    return () => clearTimeout(timer)
+  }, [index, count, paused, reduceMotion, interval])
 
   return (
     <div
@@ -62,7 +63,8 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
         </AnimatePresence>
 
         {count > 1 && (
-          <div className="absolute right-4 bottom-4 flex items-center gap-1 rounded-full bg-ink/45 p-1 backdrop-blur">
+          // Top corner on phones, where the caption chip would cover them.
+          <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-ink/45 p-1 backdrop-blur lg:top-auto lg:right-4 lg:bottom-4">
             {photos.map((item, i) => (
               <button
                 key={item.src}
@@ -85,7 +87,7 @@ export default function PhotoCarousel({ photos, interval = 5000 }) {
       </motion.div>
 
       {photo.caption && (
-        <p className="absolute -bottom-5 -left-4 inline-flex items-center gap-2 rounded-2xl border border-line bg-card px-4 py-2.5 font-mono text-xs shadow-lg">
+        <p className="absolute -bottom-4 -left-3 inline-flex items-center gap-2 rounded-2xl border border-line bg-card px-3 py-2 font-mono text-[11px] whitespace-nowrap shadow-lg sm:-bottom-5 sm:-left-4 sm:px-4 sm:py-2.5 sm:text-xs">
           <LuMapPin className="text-accent-ink" aria-hidden="true" />
           {photo.caption}
         </p>
