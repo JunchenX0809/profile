@@ -1,9 +1,11 @@
-import { useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
+import { useMediaQuery } from '../hooks/useMediaQuery.js'
 
 // Types each word, pauses, deletes it, and moves to the next.
 export default function Typewriter({ words, typeMs = 70, deleteMs = 35, holdMs = 1800 }) {
-  const reduceMotion = useReducedMotion()
+  // Not Motion's useReducedMotion: it reads the setting during the first render,
+  // which would differ from the prerendered HTML and break hydration.
+  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
   const [wordIndex, setWordIndex] = useState(0)
   const [text, setText] = useState('')
   const [deleting, setDeleting] = useState(false)

@@ -1,0 +1,32 @@
+# Run once, by hand, after junchenxiong.com is live. Replaces the old GitHub
+# Pages site (junchenx0809.github.io/profile/) with a page that forwards every
+# old address to the same path on junchenxiong.com.
+name: Publish redirect to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      # GitHub Pages serves 404.html for every missing path, so one page covers all old links.
+      - run: |
+          mkdir site
+          cp .github/pages-redirect/404.html site/404.html
+          cp .github/pages-redirect/404.html site/index.html
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v5

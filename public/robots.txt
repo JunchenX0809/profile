@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://junchenxiong.com/sitemap.xml
