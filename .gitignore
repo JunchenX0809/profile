@@ -1,6 +1,7 @@
 # Dependencies and build output (recreated by `npm ci` and `npm run build`)
 node_modules/
 dist/
+dist-ssr/
 
 # OS, editor, and local environment files
 .DS_Store

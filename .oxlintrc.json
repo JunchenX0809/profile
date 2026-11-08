@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["react", "oxc"],
-  "ignorePatterns": ["dist", "skills"],
+  "ignorePatterns": ["dist", "dist-ssr"],
   "globals": {
     "__APP_VERSION__": "readonly",
     "__BUILD_DATE__": "readonly"
