@@ -2,6 +2,7 @@
 node_modules/
 dist/
 dist-ssr/
+.wrangler/
 
 # OS, editor, and local environment files
 .DS_Store

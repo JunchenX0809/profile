@@ -1,4 +1,4 @@
-# Cloudflare Pages response headers. Format: a path, then indented "Name: value" lines.
+# Cloudflare response headers (Workers static assets). Format: a path, then indented "Name: value" lines.
 
 /*
   X-Content-Type-Options: nosniff

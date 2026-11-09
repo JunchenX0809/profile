@@ -1,5 +1,6 @@
-# Lints and builds every pull request and every push to main. Cloudflare Pages
-# builds and publishes the site itself; this workflow only catches broken builds.
+# Lints and builds every pull request and every push to main, and validates the
+# Cloudflare config. Cloudflare builds and publishes the site itself; this
+# workflow only catches problems before merge.
 name: Check
 
 on:
@@ -23,3 +24,6 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - run: npx wrangler deploy --dry-run
+        env:
+          WRANGLER_SEND_METRICS: 'false'

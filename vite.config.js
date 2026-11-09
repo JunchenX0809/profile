@@ -5,8 +5,8 @@ import { defineConfig } from 'vite'
 
 const version = readFileSync(new URL('./version.txt', import.meta.url), 'utf8').trim()
 const buildDate = new Date().toISOString().slice(0, 10)
-// Cloudflare Pages and GitHub Actions provide the commit being built; local builds have none.
-const commit = (process.env.CF_PAGES_COMMIT_SHA ?? process.env.GITHUB_SHA)?.slice(0, 7) ?? 'local'
+// Cloudflare Workers Builds and GitHub Actions provide the commit being built; local builds have none.
+const commit = (process.env.WORKERS_CI_COMMIT_SHA ?? process.env.GITHUB_SHA)?.slice(0, 7) ?? 'local'
 
 // Publishes /version.txt so the live site shows which release it serves.
 function versionFile() {
