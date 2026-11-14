@@ -46,7 +46,8 @@ export const profile = {
       position: 'center',
     },
   ],
-  email: 'jcxiong8956@gmail.com',
+  // Cloudflare Email Routing forwards this address to a private inbox.
+  email: 'hello@junchenxiong.com',
   // Files in public/ are served as-is; keep this name stable so old links keep working.
   resume: 'Junchen_Xiong_Resume.pdf',
   linkedin: 'https://www.linkedin.com/in/jcxiong0809/',
