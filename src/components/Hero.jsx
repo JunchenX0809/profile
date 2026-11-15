@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
-import { LuArrowDown, LuFileText } from 'react-icons/lu'
+import { LuArrowDown, LuArrowRight, LuFileText } from 'react-icons/lu'
 import { profile } from '../content/profile.js'
 import IconLink from './IconLink.jsx'
 import Magnetic from './Magnetic.jsx'
@@ -36,16 +36,32 @@ export default function Hero() {
 
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pt-12 pb-28 sm:gap-16 sm:px-8 sm:pt-20 sm:pb-32 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
         <div>
-          <motion.p
+          {/* Announcement pill: tag, message, and an explicit action, so it reads as a link without hover. */}
+          <motion.a
             {...rise(0.05)}
-            className="inline-flex items-center gap-2.5 rounded-full border border-line bg-card/80 px-3.5 py-1.5 font-mono text-xs text-muted backdrop-blur"
+            href={profile.businessCard}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full border border-line bg-card py-1 pr-4 pl-1 font-mono text-xs shadow-sm shadow-ink/5 transition hover:border-accent/50 hover:shadow-md hover:shadow-accent/10 sm:text-sm"
           >
-            <span className="relative flex size-2" aria-hidden="true">
-              <span className="absolute inset-0 animate-ping-slow rounded-full bg-accent opacity-60 motion-reduce:animate-none" />
-              <span className="relative size-2 rounded-full bg-accent" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/15 px-2.5 py-1 text-[11px] font-semibold tracking-[0.2em] text-accent-ink uppercase">
+              <span className="relative flex size-1.5" aria-hidden="true">
+                <span className="absolute inset-0 animate-ping-slow rounded-full bg-accent opacity-60 motion-reduce:animate-none" />
+                <span className="relative size-1.5 rounded-full bg-accent" />
+              </span>
+              Now
             </span>
-            <span className="hidden sm:inline">Currently ·</span> {profile.status}
-          </motion.p>
+            <span className="font-medium text-ink">{profile.status}</span>
+            <span aria-hidden="true" className="hidden h-4 w-px bg-line sm:block" />
+            <span className="inline-flex items-center gap-1 font-semibold text-accent-ink">
+              <span className="hidden sm:inline">View my card</span>
+              <LuArrowRight
+                className="transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </span>
+            <span className="sr-only">(opens my digital business card in a new tab)</span>
+          </motion.a>
 
           <motion.h1
             {...rise(0.15)}
@@ -73,10 +89,12 @@ export default function Hero() {
           <motion.div {...rise(0.45)} className="mt-10 flex flex-wrap items-center gap-3">
             <Magnetic strength={0.2}>
               <a
-                href="#work"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-shadow hover:shadow-lg hover:shadow-ink/20"
               >
-                See my work <LuArrowDown aria-hidden="true" />
+                <FaLinkedin aria-hidden="true" /> Connect on LinkedIn
               </a>
             </Magnetic>
             <Magnetic strength={0.2}>
@@ -89,18 +107,17 @@ export default function Hero() {
                 <LuFileText aria-hidden="true" /> Résumé
               </a>
             </Magnetic>
-            <div className="flex items-center gap-1">
-              <Magnetic>
-                <IconLink href={profile.linkedin} label="LinkedIn">
-                  <FaLinkedin />
-                </IconLink>
-              </Magnetic>
-              <Magnetic>
-                <IconLink href={profile.github} label="GitHub">
-                  <FaGithub />
-                </IconLink>
-              </Magnetic>
-            </div>
+            <a
+              href="#work"
+              className="inline-flex items-center gap-1.5 px-2 py-3 text-sm font-semibold text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+            >
+              See my work <LuArrowDown aria-hidden="true" />
+            </a>
+            <Magnetic>
+              <IconLink href={profile.github} label="GitHub">
+                <FaGithub />
+              </IconLink>
+            </Magnetic>
           </motion.div>
         </div>
 
