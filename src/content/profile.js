@@ -50,6 +50,8 @@ export const profile = {
   email: 'hello@junchenxiong.com',
   // Files in public/ are served as-is; keep this name stable so old links keep working.
   resume: 'Junchen_Xiong_Resume.pdf',
+  // Digital business card for the current role; the hero's "Currently" chip links here.
+  businessCard: 'https://bankuity-cards.pages.dev/junchen-xiong/',
   linkedin: 'https://www.linkedin.com/in/jcxiong0809/',
   github: 'https://github.com/JunchenX0809',
   sourceCode: 'https://github.com/JunchenX0809/profile',
